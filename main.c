@@ -112,10 +112,10 @@ int main(int argc, char* argv[]){
     }
 
     printf("Position\tA\tC\tG\tT\n");
-    for (int i = 1; i < motif_len; i++) 
+    for (int i = 0; i < motif_len; i++) 
     {
         printf("%d\t\t%d\t%d\t%d\t%d\n",
-            i,
+            i+1,
             sample[0][i],
             sample[1][i],
             sample[2][i],
@@ -142,10 +142,10 @@ int main(int argc, char* argv[]){
 
     printf("\n");
     printf("Position\tA\t\tC\t\tG\t\tT\n");
-    for (int i = 1; i < motif_len; i++) 
+    for (int i = 0; i < motif_len; i++) 
     {
         printf("%d\t\t%f\t%f\t%f\t%f\n",
-            i,
+            i+1,
             p[0][i], 
             p[1][i], 
             p[2][i], 
@@ -174,16 +174,16 @@ int main(int argc, char* argv[]){
     {
         for(int j=0; j<4; j++)
         {
-            s[j][i]=log10((p[j][i])/(q[j])); 
+            s[j][i]=log((p[j][i])/(q[j])); 
         }
     }
 
     printf("\n");
     printf("Position\tA\t\tC\t\tG\t\tT\n");
-    for (int i = 1; i < motif_len; i++) 
+    for (int i = 0; i < motif_len; i++) 
     {
         printf("%d\t\t%f\t%f\t%f\t%f\n",
-            i,
+            i+1,
             s[0][i], 
             s[1][i], 
             s[2][i], 
@@ -192,10 +192,37 @@ int main(int argc, char* argv[]){
     }
 
 
-    
+    /*
+    double hit[BUFSIZE];
 
 
+    for(int i=0; i<motif_len; i++)
+    {
+        if(g_pro[i]=='A')
+        {
+            hit[]+=s[0][i]
+        }
 
+        else if(=='C')
+        {
+            hit[]+=s[1][i]
+        }
+
+        else if(=='G')
+        {
+            hit[]+=s[2][i]
+        }
+
+        else if(=='T')
+        {
+            hit[]+=s[3][i]
+        }
+
+
+    }
+
+
+*/
     
   return 0;
 }
