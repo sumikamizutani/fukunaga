@@ -105,7 +105,7 @@ int read_promoter(char *filename){
     }
 
     printf("Position\tA\tC\tG\tT\n");
-    for (int i = 0; i < motif_len; i++) 
+    for (int i=0; i<motif_len; i++) 
     {
         printf("%d\t\t%d\t%d\t%d\t%d\n",
             i+1,
@@ -113,7 +113,7 @@ int read_promoter(char *filename){
             sample[1][i],
             sample[2][i],
             sample[3][i]
-        );
+              );
     }
 
     }
@@ -137,7 +137,7 @@ int read_promoter(char *filename){
 
     printf("\n");
     printf("Position\tA\t\tC\t\tG\t\tT\n");
-    for (int i = 0; i < motif_len; i++) 
+    for (int i=0; i<motif_len; i++) 
     {
         printf("%d\t\t%f\t%f\t%f\t%f\n",
             i+1,
@@ -184,7 +184,7 @@ int read_promoter(char *filename){
 
     printf("\n");
     printf("Position\tA\t\tC\t\tG\t\tT\n");
-    for (int i = 0; i < motif_len; i++) 
+    for (int i=0; i<motif_len; i++) 
     {
         printf("%d\t\t%f\t%f\t%f\t%f\n",
             i+1,
@@ -208,6 +208,7 @@ int read_promoter(char *filename){
       int len= strlen(g_pro[i].seq);
       double MAX=-10000;
       int best=0;
+      char best_m[BUFSIZE]={0};
 
       for(int j=0; j <= len - motif_len; j++)
       {
@@ -246,12 +247,14 @@ int read_promoter(char *filename){
           {
             MAX=total;
             best=j+1;
+            strncpy(best_m,g_pro[i].seq+j,motif_len);
+            best_m[motif_len]='\0';
           }
 
       }
 
       printf("\n");
-      printf("Gene %s: Max Score = %f at position %d", g_pro[i].name, MAX, best);
+      printf("Gene %s: %s\n Max Score = %f at position %d",g_pro[i].name,best_m,MAX,best);
 
 
     }
